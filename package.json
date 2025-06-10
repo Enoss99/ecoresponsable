@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@types/pg": "^8.11.13",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.5.0"
+  }
+}
