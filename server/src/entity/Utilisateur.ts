@@ -13,7 +13,14 @@ export class Utilisateur {
   prenom!: string;
 
   @Column()
+  password!: string;
+
+  @Column({default: false})
   isadmin!: boolean;
+
+  @Column({ default: true })
+  isactive!: boolean;
+
 
   @Column({ unique: true })
   email!: string;

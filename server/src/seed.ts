@@ -19,7 +19,9 @@ async function seed() {
   const user = AppDataSource.getRepository(Utilisateur).create({
     nom: "Alice",
     prenom: "Dupont",
+    password: "test",
     isadmin: true,
+    isactive: true,
     email: "alice@greencorp.com",
     societe: societe,
   });
