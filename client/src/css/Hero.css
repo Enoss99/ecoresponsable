@@ -1,0 +1,28 @@
+/* Hero / Presentation section */
+.mqc-hero {
+  background-image: url('../img/pexels-photo-1809346.jpeg'); /* ou '../assets/image.jpg' si tu importes localement */
+  background-size: cover;
+  background-position: center;
+  height: 75vh; /* à ajuster selon ton besoin */
+  color: white; /* optionnel selon le contraste */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mqc-hero-content {
+  margin-left: 56px;
+  color: #222;
+}
+
+.mqc-hero-content h1 {
+  margin: 0 0 6px 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.mqc-hero-content p {
+  margin: 0;
+  font-size: 1.1rem;
+}

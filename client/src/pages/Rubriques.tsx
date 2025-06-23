@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import FilterBar from './components/FilterBar';
-import Carousel from './components/Carousel';
+import Carrousel from './components/Carrousel';
 import Pagination from './components/Pagination';
 
 const themes = [
@@ -31,7 +31,7 @@ export default function Rubriques() {
         setTypeProduit={setTypeProduit}
       />
 
-      <Carousel
+      <Carrousel
         themes={themes}
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}

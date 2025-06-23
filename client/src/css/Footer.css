@@ -1,0 +1,25 @@
+/* Footer */
+.mqc-footer {
+  background: #fff;
+  padding: 18px 0 9px 0;
+  text-align: center;
+  color: #555;
+  font-size: 0.98rem;
+  margin-top: auto;
+}
+
+.mqc-footer div {
+  margin-bottom: 5px;
+}
+
+.mqc-footer a {
+  color: #222;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.mqc-footer a:hover {
+  text-decoration: underline;
+}
+

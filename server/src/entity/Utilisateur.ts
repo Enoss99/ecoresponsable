@@ -25,6 +25,9 @@ export class Utilisateur extends BaseEntity {
   @Column({ unique: true })
   email!: string;
 
-  @ManyToOne(() => Societe, societe => societe.utilisateurs)
-  societe!: Societe;
+  /*@ManyToOne(() => Societe, societe => societe.utilisateurs)
+  societe!: Societe;*/
+  //(champ temporaire)
+  @Column()
+  societe!: string;
 }

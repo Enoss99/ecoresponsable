@@ -1,0 +1,52 @@
+/* Header */
+.mqc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px 8px 32px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 24px;
+}
+
+.mqc-logo {
+  font-weight: bold;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  flex: 0 0 auto;
+}
+
+.mqc-nav {
+  display: flex;
+  gap: 14px;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+.mqc-menu {
+  background: #f2f2f2;
+  color: #222;
+  border-radius: 20px;
+  padding: 6px 20px;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  margin: 0;
+}
+
+.mqc-login-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 20px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.mqc-login-btn:hover {
+  background: #444;
+}

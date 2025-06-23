@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 import Home from './pages/Home';
 import NotFound from './pages/Notfound';
 import Rubriques from './pages/Rubriques';
+import CreateUser from './pages/CreateUser';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/rubrique" element={<Rubriques />} />
+          <Route path="/createuser" element={<CreateUser />} />
 
         </Routes>
       </main>

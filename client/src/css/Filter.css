@@ -1,0 +1,24 @@
+/* filtre */
+.comparateur-root {
+  background: #f6f6f6;
+  min-height: 100vh;
+  padding: 0 24px 24px 24px;
+}
+
+.comparateur-filtres {
+  display: flex;
+  gap: 14px;
+  margin: 28px 0 34px 0;
+  justify-content: flex-start;
+}
+
+.comparateur-filtres select {
+  border-radius: 25px;
+  border: 1.5px solid #bbb;
+  padding: 8px 22px 8px 12px;
+  font-size: 1.07rem;
+  background: #fff;
+  min-width: 180px;
+  cursor: pointer;
+  appearance: none;
+}

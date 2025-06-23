@@ -1,0 +1,33 @@
+/* But de l'app / CTA */
+.mqc-purpose {
+  background: #d4d4d4;
+  padding: 36px 0 32px 0;
+  text-align: center;
+}
+
+.mqc-purpose p {
+  margin-bottom: 18px;
+  font-size: 1.06rem;
+}
+
+.mqc-cta-row {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+
+.mqc-cta-btn {
+  background: #fff;
+  border-radius: 15px;
+  padding: 16px 28px;
+  border: none;
+  font-size: 1.07rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .18s;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+.mqc-cta-btn:hover {
+  background: #f2f2f2;
+}

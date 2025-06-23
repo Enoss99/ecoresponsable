@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../css/KeyMember.css";
 
 export default function MemberCard({ label }: { label: string }) {
   return (

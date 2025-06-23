@@ -1,0 +1,19 @@
+/* pagination */
+.comparateur-pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 6px;
+}
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #d6d6d6;
+  display: inline-block;
+  cursor: pointer;
+  transition: background .15s;
+}
+.dot.active {
+  background: #333;
+}

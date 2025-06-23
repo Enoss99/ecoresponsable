@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../css/Pagination.css";
 
 interface Props {
   count: number;

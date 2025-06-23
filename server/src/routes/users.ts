@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import pool from '../db';
-import { Utilisateur } from '../entity/Utilisateur';
+
+import { body, validationResult } from 'express-validator';
 import { UtilisateurService } from '../services/UtilisateurService';
 
 const router = Router();
@@ -31,24 +31,25 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-interface NewUser {
-  name: string;
-  prenom: string;
-  email: string;
-  password: string;
-}
-
 // POST /api/users - crée un nouvel utilisateur
-router.post('/', async (req, res) => {
-  const { nom, prenom, email, password, isadmin, societe } = req.body;
-  if (!nom || !prenom || !email || !password) {
-    res.status(400).json({ error: 'Tous les champs sont requis' });
-  }
+router.post('/',
+  [
+    body('nom').notEmpty().withMessage('Le nom est requis'),
+    body('prenom').notEmpty().withMessage('Le prénom est requis'),
+    body('email').isEmail().withMessage('Email invalide'),
+    body('password').isLength({ min: 6 }).withMessage('Mot de passe trop court'),
+    //body('societe').notEmpty().withMessage('La société est requise'),
+    body('isadmin').optional().isBoolean().withMessage('isadmin doit être un booléen'),
+  ],  async (req: Request, res: Response) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(400).json({ error: errors.array()[0].msg });
+    }
   try {
-    const user = await UtilisateurService.create({ nom, prenom, email, password, isadmin, societe });
+    const user = await UtilisateurService.create(req.body);
     res.status(201).json(user);
   } catch (err) {
-    res.status(500).json({ error: 'Erreur serveur' });
+    res.status(500).json({ error: 'Erreur serveur1' });
   }
 });
 
