@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/Filter.css";
+import "./Filter.css";
 
 interface Props {
   site: string;

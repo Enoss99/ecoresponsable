@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/AppPurpose.css";
+import "./AppPurpose.css";
 
 export default function AppPurpose() {
   return (

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
-import './css/App.css';
+import './App.css';
 import Home from './pages/Home';
 import NotFound from './pages/Notfound';
 import Rubriques from './pages/Rubriques';

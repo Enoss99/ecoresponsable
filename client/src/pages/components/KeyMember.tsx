@@ -1,6 +1,6 @@
 import React from 'react';
 import MemberCard from './MemberCard';
-import "../../css/KeyMember.css";
+import "./KeyMember.css";
 
 export default function KeyMember() {
   const members = [

@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/CarrouselCard.css";
+import "./CarrouselCard.css";
 
 interface Props {
   theme: string;

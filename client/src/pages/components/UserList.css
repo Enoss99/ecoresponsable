@@ -1,0 +1,25 @@
+.user-list {
+  padding: 2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 16px;
+}
+
+th, td {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+.user-inactive {
+  color: #999;
+  background-color: #f9f9f9;
+}

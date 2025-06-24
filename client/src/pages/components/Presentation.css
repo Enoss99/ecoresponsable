@@ -1,6 +1,6 @@
 /* Hero / Presentation section */
 .mqc-hero {
-  background-image: url('../img/pexels-photo-1809346.jpeg'); /* ou '../assets/image.jpg' si tu importes localement */
+  background-image: url('../../../public/img/pexels-photo-1809346.jpeg'); /* ou '../assets/image.jpg' si tu importes localement */
   background-size: cover;
   background-position: center;
   height: 75vh; /* à ajuster selon ton besoin */
