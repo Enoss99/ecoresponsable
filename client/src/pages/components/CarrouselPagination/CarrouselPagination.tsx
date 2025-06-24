@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Pagination.css";
+import "./CarrouselPagination.css";
 
 interface Props {
   count: number;

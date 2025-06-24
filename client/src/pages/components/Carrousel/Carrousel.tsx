@@ -1,5 +1,5 @@
 import React from 'react';
-import CarouselCard from './CarrouselCard';
+import CarouselCard from '../CarrouselCard/CarrouselCard';
 import "./Carrousel.css";
 
 interface Theme {

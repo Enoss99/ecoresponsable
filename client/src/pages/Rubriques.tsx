@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Header from './components/Header';
-import FilterBar from './components/FilterBar';
-import Carrousel from './components/Carrousel';
-import Pagination from './components/Pagination';
+import Header from './components/Header/Header';
+import FilterBar from './components/FilterBar/FilterBar';
+import Carrousel from './components/Carrousel/Carrousel';
+import Pagination from './components/CarrouselPagination/CarrouselPagination';
 
 const themes = [
   { theme: 'Eau', note: 'A', image: '', selected: false },
