@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './UserList.css'; 
+import Button from '../Button/Button';
 
 type Utilisateur = {
   id: number;
@@ -55,6 +56,7 @@ export default function UserList() {
           ))}
         </tbody>
       </table>
+      <Button label="Ajouter un utilisateur" to="/createuser" />
     </div>
   );
 }

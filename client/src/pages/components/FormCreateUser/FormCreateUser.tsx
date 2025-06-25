@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './FormCreateUser.css';
+import Button from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 type FormData = {
   nom: string;
@@ -13,6 +15,7 @@ type FormData = {
 
 export default function CreateUser() {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+  const navigate = useNavigate();
 
   const onSubmit = async (data: FormData) => {
     const res = await fetch('http://localhost:4000/api/users', {
@@ -26,6 +29,7 @@ export default function CreateUser() {
       alert(result.error || 'Erreur lors de la création');
     } else {
       alert('Utilisateur créé !');
+      navigate('/usertable'); 
     }
   };
 
@@ -66,7 +70,7 @@ export default function CreateUser() {
         <input {...register('societe', { required: 'Nom de société requis' })} />
         {errors.societe && <p>{errors.societe.message}</p>}
       </div>
-      <button type="submit">Créer</button>
+      <Button type="submit" label="Créer"/>
     </form>
     </div>
   );
