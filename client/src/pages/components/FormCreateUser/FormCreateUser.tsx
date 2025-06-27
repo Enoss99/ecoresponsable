@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import './FormCreateUser.css';
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
+import { createUser } from '../../../services/ServiceUtilisateur';
 
 type FormData = {
   nom: string;
@@ -17,21 +18,15 @@ export default function CreateUser() {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
   const navigate = useNavigate();
 
-  const onSubmit = async (data: FormData) => {
-    const res = await fetch('http://localhost:4000/api/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-
-    const result = await res.json();
-    if (!res.ok) {
-      alert(result.error || 'Erreur lors de la création');
-    } else {
-      alert('Utilisateur créé !');
-      navigate('/usertable'); 
-    }
-  };
+const onSubmit = async (data: FormData) => {
+  try {
+    await createUser(data);
+    alert('Utilisateur créé !');
+    navigate('/usertable');
+  } catch (error: any) {
+    alert(error.message);
+  }
+};
 
   return (
     <div>

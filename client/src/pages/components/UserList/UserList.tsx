@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './UserList.css'; 
 import Button from '../Button/Button';
+import { getUsers } from '../../../services/ServiceUtilisateur';
 
 type Utilisateur = {
   id: number;
@@ -17,9 +18,7 @@ export default function UserList() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch('http://localhost:4000/api/users');
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Erreur inconnue');
+        const data = await getUsers();
         setUsers(data);
       } catch (err: any) {
         setError(err.message);
