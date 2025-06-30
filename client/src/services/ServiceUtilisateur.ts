@@ -1,6 +1,6 @@
-// src/services/UserService.ts
+import { BASE_API_URL } from './Restconfig';
 
-const API_URL = 'http://localhost:4000/api/users';
+const API_URL = '${BASE_API_URL}/users';
 
 export type NewUser = {
   nom: string;
@@ -34,5 +34,25 @@ export async function getUsers() {
     throw new Error(data.error || 'Erreur lors de la récupération des utilisateurs');
   }
 
+  return data;
+}
+
+export async function disableUser(id: number) {
+  const res = await fetch(`${API_URL}/${id}/disable`, {
+    method: 'POST',
+  });
+
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Erreur lors de la désactivation');
+  return data;
+}
+
+export async function enableUser(id: number) {
+  const res = await fetch(`${API_URL}/${id}/enable`, {
+    method: 'POST',
+  });
+
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Erreur lors de l’activation');
   return data;
 }
