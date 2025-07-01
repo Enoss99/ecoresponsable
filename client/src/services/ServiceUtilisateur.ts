@@ -1,6 +1,4 @@
-import { BASE_API_URL } from './Restconfig';
-
-const API_URL = '${BASE_API_URL}/users';
+import { getApi, postApi } from './APIService';
 
 export type NewUser = {
   nom: string;
@@ -11,48 +9,18 @@ export type NewUser = {
   isadmin: boolean;
 };
 
-export async function createUser(user: NewUser) {
-  const res = await fetch(API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(user),
-  });
+export const createUser = async (user: NewUser) => {
+  return await postApi('/users', user);
+};
 
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.error || 'Erreur API');
-  }
+export const getUsers = async () => {
+  return await getApi('/users');
+};
 
-  return await res.json();
-}
+export const disableUser = async (id: number) => {
+  return await postApi(`/users/${id}/disable`, {});
+};
 
-export async function getUsers() {
-  const res = await fetch(API_URL);
-
-  const data = await res.json();
-  if (!res.ok) {
-    throw new Error(data.error || 'Erreur lors de la récupération des utilisateurs');
-  }
-
-  return data;
-}
-
-export async function disableUser(id: number) {
-  const res = await fetch(`${API_URL}/${id}/disable`, {
-    method: 'POST',
-  });
-
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || 'Erreur lors de la désactivation');
-  return data;
-}
-
-export async function enableUser(id: number) {
-  const res = await fetch(`${API_URL}/${id}/enable`, {
-    method: 'POST',
-  });
-
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || 'Erreur lors de l’activation');
-  return data;
-}
+export const enableUser = async (id: number) => {
+  return await postApi(`/users/${id}/enable`, {});
+};
