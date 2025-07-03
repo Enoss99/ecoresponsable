@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import pool from './db';
 import usersRoutes from './routes/users';
+import societeRouter from './routes/Societe';
 import 'reflect-metadata';
 import { AppDataSource } from './data-source';
 
@@ -27,6 +28,7 @@ AppDataSource.initialize()
   });
 
 app.use('/api/users', usersRoutes);
+app.use('/api/societe', societeRouter);
 
 app.get('/api/ping', (_req, res) => {
   res.json({ message: 'pong' });

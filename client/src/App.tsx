@@ -9,6 +9,7 @@ import NotFound from './pages/Notfound';
 import Rubriques from './pages/Rubriques';
 import CreateUser from './pages/CreateUser';
 import UserTable from './pages/UserTable';
+import CreateSociete from './pages/CreateSociete';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -27,6 +28,8 @@ function App() {
           <Route path="/rubrique" element={<Rubriques />} />
           <Route path="/createuser" element={<CreateUser />} />
           <Route path="/usertable" element={<UserTable />} />
+          <Route path="/createsociete" element={<CreateSociete />} />
+
 
         </Routes>
       </main>
