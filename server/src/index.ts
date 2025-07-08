@@ -1,47 +1,43 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import pool from './db';
-import usersRoutes from './routes/users';
-import societeRouter from './routes/Societe';
-import 'reflect-metadata';
-import { AppDataSource } from './data-source';
-
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import pool from "./db";
+import usersRoutes from "./routes/users";
+import societeRouter from "./routes/Societe";
+import "reflect-metadata";
+import { AppDataSource } from "./data-source";
+import path from "path";
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use('/users', usersRoutes);
 
+// Serve static files from the React app
+app.use(express.static("client"));
 
 AppDataSource.initialize()
   .then(() => {
-    console.log('Base de données connectée');
+    console.log("Base de données connectée");
     app.listen(4000, () => {
-      console.log('Serveur lancé sur http://localhost:4000');
+      console.log("Serveur lancé sur http://localhost:4000");
     });
   })
   .catch((err) => {
-    console.error('Erreur de connexion TypeORM :', err);
+    console.error("Erreur de connexion TypeORM :", err);
   });
 
-app.use('/api/users', usersRoutes);
-app.use('/api/societe', societeRouter);
+app.use("/api/users", usersRoutes);
+app.use("/api/societe", societeRouter);
 
-app.get('/api/ping', (_req, res) => {
-  res.json({ message: 'pong' });
+app.get("/api/ping", (_req, res) => {
+  res.json({ message: "pong" });
 });
 
-app.get('/api/users', async (_req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM users');
-    res.json({message2: result.rows});
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Erreur de base de données' });
-  }
+// All other GET requests not handled before will return React's index.html
+app.get(/(.*)/, (_req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client", "index.html"));
 });
 
 const PORT = process.env.PORT || 4000;

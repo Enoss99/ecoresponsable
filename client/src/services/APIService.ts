@@ -1,5 +1,4 @@
-
-const BASE_API_URL = /*import.meta.env.VITE_API_URL ||*/ "http://localhost:4000/api";
+const BASE_API_URL = /*import.meta.env.VITE_API_URL ||*/ "/api";
 
 export const postApi = async (endpoint: string, data: any) => {
   const res = await fetch(BASE_API_URL + endpoint, {
