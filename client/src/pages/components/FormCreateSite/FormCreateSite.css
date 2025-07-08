@@ -1,0 +1,34 @@
+.create-site-form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.create-site-form div {
+  margin-bottom: 1rem;
+}
+
+.create-site-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.create-site-form input,
+.create-site-form select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.create-site-form button {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
