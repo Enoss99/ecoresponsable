@@ -3,7 +3,10 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import pool from './db';
 import usersRoutes from './routes/users';
-import societeRouter from './routes/Societe';
+import societeRoutes from './routes/Societe';
+import siteRoutes from './routes/Site';
+import produitRoutes from './routes/Produit';
+
 import 'reflect-metadata';
 import { AppDataSource } from './data-source';
 
@@ -28,7 +31,10 @@ AppDataSource.initialize()
   });
 
 app.use('/api/users', usersRoutes);
-app.use('/api/societe', societeRouter);
+app.use('/api/societe', societeRoutes);
+app.use('/api/site', siteRoutes);
+app.use('/api/produit', produitRoutes);
+
 
 app.get('/api/ping', (_req, res) => {
   res.json({ message: 'pong' });
