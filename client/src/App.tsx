@@ -11,6 +11,8 @@ import CreateUser from './pages/CreateUser';
 import UserTable from './pages/UserTable';
 import CreateSociete from './pages/CreateSociete';
 
+import ListeSite from './pages/components/SiteList/SiteList';
+
 function App() {
   const [message, setMessage] = useState('');
   useEffect(() => {
@@ -29,6 +31,8 @@ function App() {
           <Route path="/createuser" element={<CreateUser />} />
           <Route path="/usertable" element={<UserTable />} />
           <Route path="/createsociete" element={<CreateSociete />} />
+          
+          <Route path="/listesite" element={<ListeSite />} />
 
 
         </Routes>

@@ -10,7 +10,7 @@ type FormData = {
 
 export default function FormCreateSociete() {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
-  const navigate = useNavigate();
+
 
   const onSubmit = async (data: FormData) => {
     try {

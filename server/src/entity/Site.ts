@@ -10,7 +10,7 @@ export class Site {
   @Column()
   nom!: string;
 
-  @ManyToOne(() => Societe, societe => societe.sites)
+  @OneToMany(() => Societe, societe => societe.sites)
   societe!: Societe;
 
   @OneToMany(() => Produit, produit => produit.site)
