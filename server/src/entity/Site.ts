@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import { Societe } from './Societe';
 import { Produit } from './Produit';
 
@@ -10,7 +10,8 @@ export class Site {
   @Column()
   nom!: string;
 
-  @OneToMany(() => Societe, societe => societe.sites)
+  @ManyToOne(() => Societe, societe => societe.sites)
+  @JoinColumn()
   societe!: Societe;
 
   @OneToMany(() => Produit, produit => produit.site)

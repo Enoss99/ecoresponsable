@@ -24,7 +24,7 @@ async function seed() {
     isactive: true,
     email: "alice@greencorp.com",
     //societe: societe,
-    societe: "societe temporaire", // Champ temporaire pour l'exemple
+    societe: societe, // Champ temporaire pour l'exemple
   });
   await AppDataSource.getRepository(Utilisateur).save(user);
 
