@@ -7,6 +7,8 @@ import societeRouter from "./routes/Societe";
 import "reflect-metadata";
 import { AppDataSource } from "./data-source";
 import path from "path";
+import loginRouter from "./routes/login";
+import { errorHandler } from "./middlewares/error-handler";
 
 dotenv.config();
 
@@ -35,10 +37,17 @@ app.get("/api/ping", (_req, res) => {
   res.json({ message: "pong" });
 });
 
+app.use(loginRouter);
+
 // All other GET requests not handled before will return React's index.html
 app.get(/(.*)/, (_req, res) => {
   res.sendFile(path.resolve(__dirname, "../client", "index.html"));
 });
+
+// middleware pour gérer les erreurs
+// tout ce qui est non catché passera ici
+// pratique !
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

@@ -1,7 +1,10 @@
 import { Router, Request, Response } from "express";
 
 import { body, validationResult } from "express-validator";
-import { UtilisateurService } from "../services/UtilisateurService";
+import {
+  UtilisateurCreateData,
+  UtilisateurService,
+} from "../services/UtilisateurService";
 
 const router = Router();
 
@@ -53,7 +56,16 @@ router.post(
       res.status(400).json({ error: errors.array()[0].msg });
     }
     try {
-      const user = await UtilisateurService.create(req.body);
+      const createData: UtilisateurCreateData = {
+        nom: req.body.nom,
+        prenom: req.body.prenom,
+        email: req.body.email,
+        password: req.body.password,
+        isadmin: req.body.isadmin ?? false,
+        isactive: req.body.isactive ?? true,
+        societeId: req.body.societeId, // Assuming societeId is passed
+      };
+      const user = await UtilisateurService.create(createData);
       res.status(201).json(user);
     } catch (err) {
       console.error(err);
