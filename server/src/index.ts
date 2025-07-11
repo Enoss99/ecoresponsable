@@ -8,6 +8,7 @@ import siteRoutes from './routes/Site';
 import produitRoutes from './routes/Produit';
 import rubriqueRoutes from './routes/Rubrique';
 import evaluationRoutes from './routes/Evaluation';
+import questionRoutes from './routes/Question';
 
 import 'reflect-metadata';
 import { AppDataSource } from './data-source';
@@ -38,6 +39,7 @@ app.use('/api/site', siteRoutes);
 app.use('/api/produit', produitRoutes);
 app.use('/api/rubrique', rubriqueRoutes);
 app.use('/api/evaluation', evaluationRoutes);
+app.use('/api/question', questionRoutes); 
 
 
 app.get('/api/ping', (_req, res) => {

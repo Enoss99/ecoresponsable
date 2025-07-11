@@ -13,9 +13,10 @@ export class Reponse {
   @Column()
   valeur!: string;
 
+  @Column()
+  ordre!: number;
+
   @ManyToOne(() => Evaluation, evaluation => evaluation.reponses)
   evaluation!: Evaluation;
 
-  @ManyToOne(() => Question, question => question.reponses)
-  question!: Question;
 }

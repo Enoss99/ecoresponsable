@@ -3,7 +3,6 @@ import { Rubrique } from './Rubrique';
 import { Reponse } from './Reponse';
 
 interface ChoixReponse {
-  id: number;
   texte: string;
   valeur: number;
 }
@@ -20,9 +19,6 @@ export class Question {
 
   @ManyToOne(() => Rubrique, rubrique => rubrique.questions)
   rubrique!: Rubrique;
-
-  @OneToMany(() => Reponse, reponse => reponse.question)
-  reponses!: Reponse[];
 
   choixReponse!: ChoixReponse[];
 }
