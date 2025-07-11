@@ -1,6 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Rubrique } from './Rubrique';
-import { Reponse } from './Reponse';
 
 interface ChoixReponse {
   texte: string;
@@ -20,5 +19,6 @@ export class Question {
   @ManyToOne(() => Rubrique, rubrique => rubrique.questions)
   rubrique!: Rubrique;
 
-  choixReponse!: ChoixReponse[];
+  @Column('json')
+  choixreponse!: ChoixReponse[];
 }
