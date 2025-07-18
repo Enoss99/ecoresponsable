@@ -35,4 +35,11 @@ export class QuestionService {
     await this.repo.delete(id);
     return true;
   }
+
+    static async getByRubriqueId(rubriqueId: number) {
+    return await this.repo.find({
+      where: { rubrique: { id: rubriqueId } },
+      relations: ['rubrique'],
+    });
+  }
 }

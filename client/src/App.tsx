@@ -10,8 +10,8 @@ import Rubriques from './pages/Rubriques';
 import CreateUser from './pages/CreateUser';
 import UserTable from './pages/UserTable';
 import CreateSociete from './pages/CreateSociete';
-
 import ListeSite from './pages/components/SiteList/SiteList';
+import QuestionnairePage from './pages/Questionnaire';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -33,6 +33,7 @@ function App() {
           <Route path="/createsociete" element={<CreateSociete />} />
           
           <Route path="/listesite" element={<ListeSite />} />
+          <Route path="/questionnaire/:id" element={<QuestionnairePage />} />
 
 
         </Routes>

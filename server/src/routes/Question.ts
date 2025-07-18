@@ -4,7 +4,7 @@ import { QuestionService } from '../services/QuestionService';
 
 const router = Router();
 
-router.get('/', async (_req, res) => {
+router.get('/edd', async (_req, res) => {
   try {
     const questions = await QuestionService.getAll();
     res.json(questions);

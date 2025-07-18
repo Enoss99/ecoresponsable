@@ -21,7 +21,6 @@ app.use(cors());
 app.use(express.json());
 app.use('/users', usersRoutes);
 
-
 AppDataSource.initialize()
   .then(() => {
     console.log('Base de données connectée');
@@ -42,9 +41,12 @@ app.use('/api/evaluation', evaluationRoutes);
 app.use('/api/question', questionRoutes); 
 
 
+
 app.get('/api/ping', (_req, res) => {
   res.json({ message: 'pong' });
 });
+
+
 
 app.get('/api/users', async (_req, res) => {
   try {

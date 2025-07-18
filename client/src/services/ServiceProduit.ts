@@ -7,3 +7,4 @@ export async function createProduit(data: { nom: string; siteId: number }) {
 export async function getProduits() {
   return await getApi('/produit');
 }
+

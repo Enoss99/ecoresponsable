@@ -1,0 +1,69 @@
+.questionnaire-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.question-section {
+  flex: 1;
+}
+
+.question-texte {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.choix-reponse-list {
+  list-style: none;
+  padding: 0;
+}
+
+.choix-reponse {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.choix-reponse input {
+  margin-right: 0.5rem;
+}
+
+.pagination-section {
+  width: 250px;
+  background-color: #ddd;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.pagination-box {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.page-item {
+  width: 30px;
+  height: 50px;
+  border: 2px solid black;
+  background-color: white;
+  cursor: pointer;
+}
+
+.page-item.answered {
+  background-color: lightgray;
+}
+
+.page-item.active {
+  border: 3px solid black;
+}
+
+.navigation-buttons button {
+  width: 48%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: #eee;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}

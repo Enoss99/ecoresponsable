@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
 import { RubriqueService } from '../services/RubriqueService';
+import { QuestionService } from '../services/QuestionService';
 
 const router = Router();
 
@@ -28,5 +29,22 @@ router.post(
     }
   }
 );
+
+// GET /api/rubrique/:id/question — récupère les questions d'une rubrique
+router.get('/:id/question', async (req, res) => {
+  const rubriqueId = parseInt(req.params.id);
+
+  if (isNaN(rubriqueId)) {
+    res.status(400).json({ error: 'ID invalide' });
+  }
+
+  try {
+    const questions = await QuestionService.getByRubriqueId(rubriqueId);
+    res.json(questions);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erreur serveur' });
+  }
+});
 
 export default router;
