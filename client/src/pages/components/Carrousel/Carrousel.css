@@ -1,21 +1,32 @@
-/* Carrousel */
-.comparateur-carrousel {
+
+.carrousel-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  justify-content: center;
-  margin-bottom: 18px;
+  margin-top: 30px;
 }
 
+.carrousel-content {
+  display: flex;
+  overflow: hidden;
+  width: 80%;
+  position: relative;
+}
+
+.carrousel-cards {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
 
 .carrousel-arrow {
+  background-color: transparent;
   border: none;
-  background: transparent;
-  font-size: 2.2rem;
-  color: #888;
+  font-size: 24px;
   cursor: pointer;
-  height: 140px;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
+  margin: 0 10px;
+}
+
+.carrousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }

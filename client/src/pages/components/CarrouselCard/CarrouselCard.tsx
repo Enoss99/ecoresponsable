@@ -1,17 +1,20 @@
 import React from 'react';
-import "./CarrouselCard.css";
+import './CarrouselCard.css';
 
-interface Props {
-  theme: string;
-  image?: string;
-  isActive?: boolean;
-}
+type Rubrique = {
+  id: number;
+  titre: string;
+};
 
-export default function CarrouselCard({ theme, image, isActive }: Props) {
+type Props = {
+  rubrique: Rubrique;
+  onClick: () => void;
+};
+
+export default function CarrouselCard({ rubrique, onClick }: Props) {
   return (
-    <div className={`carrousel-card${isActive ? ' active' : ''}`}>
-      <div className="card-theme">{theme || "Thème de notation"}</div>
-      <div className="card-image">{image || "Image correspondante"}</div>
+    <div className="carrousel-card" onClick={onClick}>
+      <h3>{rubrique.titre}</h3>
     </div>
   );
 }

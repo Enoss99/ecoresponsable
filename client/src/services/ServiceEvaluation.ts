@@ -8,5 +8,4 @@ export async function createEvaluation(produitId: number) {
 
 export async function getEvaluations() {
   return await getApi(ENDPOINT);
-  
 }

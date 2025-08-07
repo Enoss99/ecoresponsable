@@ -1,27 +1,58 @@
-import React, { useState } from 'react';
-import Header from './components/Header/Header';
-import FilterBar from './components/FilterBar/FilterBar';
+import React, { useEffect, useState } from 'react';
 import Carrousel from './components/Carrousel/Carrousel';
-import Pagination from './components/CarrouselPagination/CarrouselPagination';
+import FilterBar from './components/FilterBar/FilterBar';
+import Header from './components/Header/Header';
+import { useNavigate } from 'react-router-dom';
+import './Rubriques.css';
 
-const themes = [
-  { theme: 'Eau', note: 'A', image: '', selected: false },
-  { theme: 'Énergie', note: 'B', image: '', selected: false },
-  { theme: 'Déchets', note: 'C', image: '', selected: true },
-  { theme: 'Carbone', note: 'B', image: '', selected: false },
-  { theme: 'Biodiversité', note: 'A', image: '', selected: false },
-];
+type Rubrique = {
+  id: number;
+  titre: string;
+};
 
 export default function Rubriques() {
-  const [site, setSite] = useState('site 1');
-  const [produit, setProduit] = useState('produit 1');
-  const [typeProduit, setTypeProduit] = useState('type produit 1');
-  const [currentIndex, setCurrentIndex] = useState(2);
+  const [rubriques, setRubriques] = useState<Rubrique[]>([]);
+  const [site, setSite] = useState('');
+  const [produit, setProduit] = useState('');
+  const [typeProduit, setTypeProduit] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch('http://localhost:4000/api/rubrique')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          setRubriques(data);
+        } else {
+          console.error("Réponse inattendue :", data);
+          setRubriques([]);
+        }
+      })
+      .catch(err => console.error('Erreur chargement rubriques', err));
+  }, []);
+
+  const handleRubriqueClick = async (rubriqueId: number) => {
+    if (!produit) return alert('Veuillez choisir un produit avant de continuer');
+
+    try {
+      const res = await fetch('http://localhost:4000/api/evaluation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ produit: Number(produit), rubrique: rubriqueId }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+
+      navigate(`/questionnaire/${data.id}`); // redirige vers la page d'évaluation
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
 
   return (
-    <div className="comparateur-root">
+    <div className='comparateur-root'>
       <Header />
-
       <FilterBar
         site={site}
         setSite={setSite}
@@ -31,17 +62,7 @@ export default function Rubriques() {
         setTypeProduit={setTypeProduit}
       />
 
-      <Carrousel
-        themes={themes}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-      />
-
-      <Pagination
-        count={themes.length}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-      />
+      <Carrousel rubriques={rubriques} onRubriqueClick={handleRubriqueClick} />
     </div>
   );
 }

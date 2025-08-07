@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany, Column } from 'typeorm';
 import { Reponse } from './Reponse';
 import { Produit } from './Produit';
 import { Question } from './Question';
@@ -15,4 +15,8 @@ export class Evaluation {
 
   @OneToMany(() => EvaluationQuestionReponse, eqr => eqr.evaluation)
   reponses!: EvaluationQuestionReponse[];
+
+  @Column({ default: 'en_cours' })
+  etat!: 'en_cours' | 'terminee';
+
 }

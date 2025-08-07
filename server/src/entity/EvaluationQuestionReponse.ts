@@ -1,6 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany, Column } from 'typeorm';
-import { Reponse } from './Reponse';
-import { Produit } from './Produit';
+
 import { Question } from './Question';
 import { Evaluation } from './Evaluation';
 import { Rubrique } from './Rubrique';

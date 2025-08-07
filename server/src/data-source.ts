@@ -8,17 +8,18 @@ import { Rubrique } from './entity/Rubrique';
 import { Question } from './entity/Question';
 import { Evaluation } from './entity/Evaluation';
 import { Reponse } from './entity/Reponse';
+import { EvaluationQuestionReponse } from './entity/EvaluationQuestionReponse';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: 'localhost',
+  host: '172.27.145.19',
   port: 5432,
   username: 'chapuis',
   password: 'root',
   database: 'mydb',
   synchronize: true,
   logging: true,
-   entities: [Societe, Utilisateur, Site, Produit, Rubrique, Question, Evaluation, Reponse],
+   entities: [Societe, EvaluationQuestionReponse, Utilisateur, Site, Produit, Rubrique, Question, Evaluation, Reponse],
   migrations: [],
   subscribers: [],
 });

@@ -1,21 +1,15 @@
 import React from 'react';
-import "./CarrouselPagination.css";
+import './CarrouselPagination.css';
 
-interface Props {
+type Props = {
   count: number;
-  currentIndex: number;
-  setCurrentIndex: (idx: number) => void;
-}
+};
 
-export default function Pagination({ count, currentIndex, setCurrentIndex }: Props) {
+export default function CarrouselPagination({ count }: Props) {
   return (
-    <div className="comparateur-pagination">
+    <div className="carrousel-pagination">
       {Array.from({ length: count }).map((_, idx) => (
-        <span
-          key={idx}
-          className={currentIndex === idx ? "dot active" : "dot"}
-          onClick={() => setCurrentIndex(idx)}
-        ></span>
+        <span key={idx} className="dot" />
       ))}
     </div>
   );
