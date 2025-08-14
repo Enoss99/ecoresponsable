@@ -11,7 +11,8 @@ import CreateUser from './pages/CreateUser';
 import UserTable from './pages/UserTable';
 import CreateSociete from './pages/CreateSociete';
 import ListeSite from './pages/components/SiteList/SiteList';
-import QuestionnairePage from './pages/Questionnaire';
+import EvaluationQuestionnairePage from './pages/EvaluationQuestionnairePage';
+import ProduitScoresPage from './pages/ProduitScoresPage';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -33,7 +34,9 @@ function App() {
           <Route path="/createsociete" element={<CreateSociete />} />
           
           <Route path="/listesite" element={<ListeSite />} />
-          <Route path="/questionnaire/:id" element={<QuestionnairePage />} />
+          <Route path="/questionnaire/:evaluationId" element={<EvaluationQuestionnairePage />} />
+          <Route path="/produits/scores" element={<ProduitScoresPage />} />
+
 
 
         </Routes>

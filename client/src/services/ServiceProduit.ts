@@ -8,3 +8,8 @@ export async function getProduits() {
   return await getApi('/produit');
 }
 
+
+export async function getProduitsWithScores() {
+  return await getApi('/produit/with-scores');
+}
+

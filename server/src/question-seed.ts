@@ -404,7 +404,7 @@ Mise en place du science base target for nature."', valeur: 4 }
     ]
   },
 {
-    rubrique: 'Transport appro',
+    rubrique: 'Transport appro', //il y a des questions avec des % qui dérègle de la normalisation avec les autres questions. il faudrait faire des changements où avoir des questions différentes
     questions: [
                         {
         texte: "Quelle est votre zone d'approvisionnement ?",

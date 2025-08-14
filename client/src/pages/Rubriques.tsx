@@ -6,10 +6,8 @@ import CarrouselPagination from './components/CarrouselPagination/CarrouselPagin
 import { useNavigate } from 'react-router-dom';
 import './Rubriques.css';
 
-type Rubrique = {
-  id: number;
-  titre: string;
-};
+
+type Rubrique = { id: number; titre: string };
 
 export default function Rubriques() {
   const [rubriques, setRubriques] = useState<Rubrique[]>([]);
@@ -21,50 +19,41 @@ export default function Rubriques() {
   useEffect(() => {
     fetch('http://localhost:4000/api/rubrique')
       .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data)) {
-          setRubriques(data);
-        } else {
-          console.error("Réponse inattendue :", data);
-          setRubriques([]);
-        }
-      })
-      .catch(err => console.error('Erreur chargement rubriques', err));
+      .then(setRubriques)
+      .catch(console.error);
   }, []);
 
   const handleRubriqueClick = async (rubriqueId: number) => {
-    if (!produit) return alert('Veuillez choisir un produit avant de continuer');
+    if (!produit) return alert('Veuillez sélectionner un produit');
 
     try {
       const res = await fetch('http://localhost:4000/api/evaluation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ produit: Number(produit), rubrique: rubriqueId }),
+        body: JSON.stringify({ produit: Number(produit), rubrique: rubriqueId }), // ⬅️ important
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error);
+      if (!res.ok) throw new Error(data.error || 'Erreur création évaluation');
 
-      navigate(`/questionnaire/${data.id}`); // redirige vers la page d'évaluation
+      navigate(`/questionnaire/${data.id}`); // le questionnaire chargera uniquement cette rubrique
     } catch (err: any) {
       alert(err.message);
     }
   };
 
   return (
-    <div className='comparateur-root'>
-      <Header />
+    <div>
       <FilterBar
-        site={site}
-        setSite={setSite}
-        produit={produit}
-        setProduit={setProduit}
-        typeProduit={typeProduit}
-        setTypeProduit={setTypeProduit}
+        site={site} setSite={setSite}
+        produit={produit} setProduit={setProduit}
+        typeProduit={typeProduit} setTypeProduit={setTypeProduit}
       />
 
-      <Carrousel rubriques={rubriques} onRubriqueClick={handleRubriqueClick} />
-      <CarrouselPagination count={11}/>
+      <Carrousel
+        rubriques={rubriques}
+        onRubriqueClick={handleRubriqueClick}
+      />
     </div>
   );
 }

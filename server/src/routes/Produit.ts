@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
 import { ProduitService } from '../services/ProduitService';
+import { EvaluationService } from '../services/EvaluationService';
 
 const router = Router();
 
@@ -35,6 +36,26 @@ router.post(
     }
   }
 );
+
+router.get('/with-scores', async (_req, res) => {
+  try {
+    const produits = await ProduitService.getAll(); 
+    const rows = await Promise.all(
+      produits.map(async (p) => {
+        const lastEval = await EvaluationService.getLastFinishedByProduit(p.id);
+        if (!lastEval) {
+          return { produit: p, score: null };
+        }
+        const score = await EvaluationService.computeScore(lastEval.id);
+        return { produit: p, score }; 
+      })
+    );
+    res.json(rows);
+  } catch (err: any) {
+    console.error(err);
+    res.status(500).json({ error: err.message || 'Erreur serveur' });
+  }
+});
 
 
 
