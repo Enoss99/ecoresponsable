@@ -46,7 +46,7 @@ async function seed() {
   });
   await AppDataSource.getRepository(Produit).save([produit1, produit2]);
 
-  // Créer une rubrique et des questions
+  /*// Créer une rubrique et des questions
   const rubrique = AppDataSource.getRepository(Rubrique).create({
     titre: "Énergie",
     questions: [],
@@ -61,7 +61,7 @@ async function seed() {
     texte: "Le site mesure-t-il sa consommation ?",
     rubrique: rubrique,
   });
-  await AppDataSource.getRepository(Question).save([q1, q2]);
+  await AppDataSource.getRepository(Question).save([q1, q2]);*/
 
   console.log('Seed terminé avec succès ✔️');
   process.exit(0);

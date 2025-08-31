@@ -1,0 +1,171 @@
+/* === Layout général === */
+.questionnaire-page {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px;
+}
+
+.question-section {
+  flex: 1;
+}
+
+.question-texte {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* === Choix réponses === */
+.choix-reponse-list,
+.choix-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.choix-reponse,
+.choix-item {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.choix-reponse input,
+.choix-item input {
+  margin-right: 8px;
+}
+
+.choix-item .valeur {
+  opacity: 0.6;
+  margin-left: 6px;
+  font-size: 0.9rem;
+}
+
+/* === Sidebar / Pagination === */
+.pagination-section,
+.sidebar {
+  width: 260px;
+  background: #eee;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.pagination-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.page-item {
+  width: 30px;
+  height: 50px;
+  border: 2px solid #000;
+  background: #fff;
+  cursor: pointer;
+}
+
+.page-item.answered {
+  background: lightgray;
+}
+
+.page-item.active {
+  border-width: 3px;
+}
+
+/* === Navigation buttons === */
+.navigation-buttons,
+.nav-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.navigation-buttons button,
+.nav-buttons button,
+.finish-btn {
+  width: 48%;
+  padding: 0.5rem;
+  background-color: #eee;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.finish-btn {
+  width: 100%;
+  padding: 10px;
+  font-weight: 600;
+}
+
+/* === Bloc Résultat === */
+.evaluation-result {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.score-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.score-grade {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: #222;
+  color: #fff;
+}
+
+.score-stats > div {
+  margin: 2px 0;
+}
+
+/* === Breakdown === */
+.breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.breakdown-item {
+  background: #f7f7f7;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.breakdown-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.breakdown-title {
+  font-weight: 600;
+}
+
+.breakdown-grade {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: 700;
+  min-width: 28px;
+  text-align: center;
+}
+
+/* === Couleurs grade === */
+.grade-A { background: #0f9d58; color: #fff; }
+.grade-B { background: #65b168; color: #fff; }
+.grade-C { background: #f4b400; color: #000; }
+.grade-D { background: #f57c00; color: #fff; }
+.grade-E { background: #db4437; color: #fff; }
