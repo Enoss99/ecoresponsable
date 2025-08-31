@@ -40,6 +40,7 @@ router.post('/',
     body('password').isLength({ min: 6 }).withMessage('Mot de passe trop court'),
     //body('societe').notEmpty().withMessage('La société est requise'),
     body('isadmin').optional().isBoolean().withMessage('isadmin doit être un booléen'),
+    body('societeId').isNumeric().withMessage('societeId requis'),
   ],  async (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

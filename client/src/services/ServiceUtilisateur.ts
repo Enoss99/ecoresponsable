@@ -5,8 +5,8 @@ export type NewUser = {
   prenom: string;
   email: string;
   password: string;
-  societe: string;
   isadmin: boolean;
+  societe: number;
 };
 
 export const createUser = async (user: NewUser) => {

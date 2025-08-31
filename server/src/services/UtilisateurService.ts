@@ -1,10 +1,22 @@
 import { AppDataSource } from '../data-source';
 import { Utilisateur } from '../entity/Utilisateur';
+import { Societe } from '../entity/Societe';
 
 export class UtilisateurService {
   static repo = AppDataSource.getRepository(Utilisateur);
+  static societeRepo = AppDataSource.getRepository(Societe);
 
-  static async create(data: Partial<Utilisateur>) {
+  static async create(data: {
+    nom: string;
+    prenom: string;
+    email: string;
+    password: string;
+    isadmin?: boolean;
+    isactive?: boolean;
+    societeId: number;
+  }) {
+    const societe = await this.societeRepo.findOneByOrFail({ id: Number(data.societeId) });
+
     const user = this.repo.create({
       nom: data.nom,
       prenom: data.prenom,
@@ -12,17 +24,17 @@ export class UtilisateurService {
       password: data.password,
       isadmin: data.isadmin ?? false,
       isactive: data.isactive ?? true,
-      societe: data.societe,
+      societe,
     });
     return await this.repo.save(user);
   }
 
   static async getAll() {
-    return await this.repo.find();
+    return await this.repo.find({ relations: ['societe'] });
   }
 
   static async getById(id: number) {
-    return await this.repo.findOneBy({ id });
+    return await this.repo.findOne({ where: { id }, relations: ['societe'] });
   }
 
   static async update(id: number, data: Partial<Utilisateur>) {
