@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Carrousel from './components/Carrousel/Carrousel';
 import FilterBar from './components/FilterBar/FilterBar';
-import Header from './components/Header/Header';
 import CarrouselPagination from './components/CarrouselPagination/CarrouselPagination'
 import { useNavigate } from 'react-router-dom';
 import './Rubriques.css';

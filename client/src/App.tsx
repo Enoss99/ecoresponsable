@@ -13,6 +13,9 @@ import CreateSociete from './pages/CreateSociete';
 import ListeSite from './pages/components/SiteList/SiteList';
 import EvaluationQuestionnairePage from './pages/EvaluationQuestionnairePage';
 import ProduitScoresPage from './pages/ProduitScoresPage';
+import CreateSite from './pages/components/FormCreateSite/FormCreateSite';
+import CreateProduit from './pages/components/FormCreateProduit/FormCreateProduit';
+import Layout from './pages/components/Layout/Layout';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -25,6 +28,7 @@ function App() {
   return (
     <Router>
       <main className="main">
+        <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
@@ -32,7 +36,8 @@ function App() {
           <Route path="/createuser" element={<CreateUser />} />
           <Route path="/usertable" element={<UserTable />} />
           <Route path="/createsociete" element={<CreateSociete />} />
-          
+          <Route path="/createsite" element={<CreateSite />} />
+          <Route path="/createproduit" element={<CreateProduit />} />
           <Route path="/listesite" element={<ListeSite />} />
           <Route path="/questionnaire/:evaluationId" element={<EvaluationQuestionnairePage />} />
           <Route path="/produits/scores" element={<ProduitScoresPage />} />
@@ -40,6 +45,7 @@ function App() {
 
 
         </Routes>
+        </Layout>
       </main>
     </Router>
   );
